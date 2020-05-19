@@ -39,7 +39,21 @@ C:\> activate tensorflow1
 ```
 Install tensorflow-gpu in this environment by issuing:
 ```
-(tensorflow1) C:\> pip install tensorflow-gpu==1.15 keras-gpu
+(tensorflow1) C:\> pip install tensorflow-gpu==1.15 keras-gpu==2.31
 ```
 
 (Note: You can also use the CPU-only version of TensorFow, but it will run much slower. If you want to use the CPU-only version, just use "tensorflow" instead of "tensorflow-gpu" in the previous command.)
+
+Install the other necessary packages by issuing the following commands:
+```
+(tensorflow1) C:\> conda install -c anaconda protobuf
+(tensorflow1) C:\> pip install pillow
+(tensorflow1) C:\> pip install lxml
+(tensorflow1) C:\> pip install Cython
+(tensorflow1) C:\> pip install contextlib2
+(tensorflow1) C:\> pip install jupyter
+(tensorflow1) C:\> pip install matplotlib
+(tensorflow1) C:\> pip install pandas
+(tensorflow1) C:\> pip install opencv-python
+```
+(Note: The ‘pandas’ and ‘opencv-python’ packages are not needed by TensorFlow, but they are used in the Python scripts to generate TFRecords and to work with images, videos, and webcam feeds.)

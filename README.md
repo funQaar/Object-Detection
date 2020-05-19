@@ -68,9 +68,11 @@ Install the other necessary packages by issuing the following commands:
 2. Then, activate the environment by :
 ```
 C:\> activate tensorflow1
+```
 
 3.Then,open python terminal by :
 ```
 C:\> idle
-
+```
 4. Browse to the file location of file named : Object_img.py and run it by pressing F5.
+5. Voila, The result is displayed below.

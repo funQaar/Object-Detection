@@ -24,7 +24,7 @@ TensorFlow-GPU allows your PC to use the video card to provide extra processing 
 ### 1. Install Anaconda.
 To install [Anaconda](https://www.anaconda.com/distribution/#download-section) as instructed in the video, because the Anaconda virtual environment will be used for the rest of this tutorial. (Note: The current version of Anaconda uses Python 3.7, which is not officially supported by TensorFlow. However, when creating an Anaconda virtual environment during this tutorial, we will tell it to use Python 3.5.)
 
-### 2. Creating anaconda virtual Environment.
+### 2. Creating anaconda virtual Environment and Installing Dependencies.
 Now, we'll work on setting up a virtual environment in Anaconda for tensorflow-gpu. From the Start menu in Windows, search for the Anaconda Prompt utility, right click on it, and click “Run as Administrator”. If Windows asks you if you would like to allow it to make changes to your computer, click Yes.
 
 In the command terminal that pops up, create a new virtual environment called “tensorflow1” by issuing the following command:
@@ -57,3 +57,4 @@ Install the other necessary packages by issuing the following commands:
 (tensorflow1) C:\> pip install opencv-python
 ```
 (Note: The ‘pandas’ and ‘opencv-python’ packages are not needed by TensorFlow, but they are used in the Python scripts to generate TFRecords and to work with images, videos, and webcam feeds.)
+

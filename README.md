@@ -61,3 +61,16 @@ Install the other necessary packages by issuing the following commands:
 ### 3. Download or Clone My repository.
 
 1. [Download the Repository from this link by clicking HERE](https://github.com/funQaar/Object-Detection-General-)
+
+### 3. STEPS for Running the Final Program.
+
+1. Open Anaconda Terminal.
+2. Then, activate the environment by :
+```
+C:\> activate tensorflow1
+
+3.Open Python Idle by :
+```
+C:\> idle
+
+4. Browse to the file location of file named : Object_img.py and run it by pressing F5.

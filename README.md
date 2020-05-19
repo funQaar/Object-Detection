@@ -69,7 +69,7 @@ Install the other necessary packages by issuing the following commands:
 ```
 C:\> activate tensorflow1
 
-3.Open Python Idle by :
+3.Then,open python terminal by :
 ```
 C:\> idle
 

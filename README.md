@@ -1,78 +1,104 @@
-# Object-Detection-using-tensorflow
+# Tensorflow Object Detection API
+Creating accurate machine learning models capable of localizing and identifying
+multiple objects in a single image remains a core challenge in computer vision.
+The TensorFlow Object Detection API is an open source framework built on top of
+TensorFlow that makes it easy to construct, train and deploy object detection
+models.  At Google we’ve certainly found this codebase to be useful for our
+computer vision needs, and we hope that you will as well.
+<p align="center">
+  <img src="g3doc/img/kites_detections_output.jpg" width=676 height=450>
+</p>
+Contributions to the codebase are welcome and we would love to hear back from
+you if you find this API useful.  Finally if you use the Tensorflow Object
+Detection API for a research publication, please consider citing:
 
-## Brief Summary
-*Last updated: with TensorFlow v1.15.*
-
-This repository is a tutorial for how to use TensorFlow's Object Detection API to train an object detection classifier for multiple objects on Windows 10, 8, or 7. (It will also work on Linux-based OSes with some minor changes.) It was originally written using TensorFlow version 1.15, but will also work for newer versions of TensorFlow.
-
-I will also make a YouTube video that walks through this tutorial. Any discrepancies between the video and this written tutorial are due to updates required for using newer versions of TensorFlow. 
-
-**If there are differences between this written tutorial and the video, follow the written tutorial!**
-
-This readme describes every step required to get going with your own object detection classifier:
-
-## Introduction
-The purpose of this tutorial is to explain how to train your own convolutional neural network object detection classifier for multiple objects, starting from scratch. At the end of this tutorial, you will have a program that can identify and draw boxes around specific objects in pictures, videos, or in a webcam feed.
-
-There are several good tutorials available for how to use TensorFlow’s Object Detection API to train a classifier for a single object. However, these usually assume you are using a Linux operating system. If you’re like me, you might be a little hesitant to install Linux on your high-powered gaming PC that has the sweet graphics card you’re using to train a classifier. The Object Detection API seems to have been developed on a Linux-based OS. To set up TensorFlow to train a model on Windows, there are several workarounds that need to be used in place of commands that would work fine on Linux. Also, this tutorial provides instructions for training a classifier that can detect multiple objects, not just one.
-
-The tutorial is written for Windows 10, and it will also work for Windows 7 and 8. The general procedure can also be used for Linux operating systems, but file paths and package installation commands will need to change accordingly. I used TensorFlow-GPU v1.15 while writing the initial version of this tutorial, but it will likely work for future versions of TensorFlow.
-
-TensorFlow-GPU allows your PC to use the video card to provide extra processing power while training, so it will be used for this tutorial. In my experience, using TensorFlow-GPU instead of regular TensorFlow reduces training time by a factor of about 8 (3 hours to train instead of 24 hours). The CPU-only version of TensorFlow can also be used for this tutorial, but it will take longer. 
-
-## Steps
-### 1. Install Anaconda.
-To install [Anaconda](https://www.anaconda.com/distribution/#download-section) as instructed in the video, because the Anaconda virtual environment will be used for the rest of this tutorial. (Note: The current version of Anaconda uses Python 3.7, which is not officially supported by TensorFlow. However, when creating an Anaconda virtual environment during this tutorial, we will tell it to use Python 3.5.)
-
-### 2. Creating anaconda virtual Environment and Installing Dependencies.
-Now, we'll work on setting up a virtual environment in Anaconda for tensorflow-gpu. From the Start menu in Windows, search for the Anaconda Prompt utility, right click on it, and click “Run as Administrator”. If Windows asks you if you would like to allow it to make changes to your computer, click Yes.
-
-In the command terminal that pops up, create a new virtual environment called “tensorflow1” by issuing the following command:
 ```
-C:\> conda create -n tensorflow1 pip python=3.5
+"Speed/accuracy trade-offs for modern convolutional object detectors."
+Huang J, Rathod V, Sun C, Zhu M, Korattikara A, Fathi A, Fischer I, Wojna Z,
+Song Y, Guadarrama S, Murphy K, CVPR 2017
 ```
-Then, activate the environment and update pip by issuing:
-```
-C:\> activate tensorflow1
+\[[link](https://arxiv.org/abs/1611.10012)\]\[[bibtex](
+https://scholar.googleusercontent.com/scholar.bib?q=info:l291WsrB-hQJ:scholar.google.com/&output=citation&scisig=AAGBfm0AAAAAWUIIlnPZ_L9jxvPwcC49kDlELtaeIyU-&scisf=4&ct=citation&cd=-1&hl=en&scfhb=1)\]
 
-(tensorflow1) C:\>python -m pip install --upgrade pip
-```
-Install tensorflow-gpu in this environment by issuing:
-```
-(tensorflow1) C:\> pip install tensorflow-gpu==1.15 keras-gpu==2.31
-```
+## Maintainers
 
-(Note: You can also use the CPU-only version of TensorFow, but it will run much slower. If you want to use the CPU-only version, just use "tensorflow" instead of "tensorflow-gpu" in the previous command.)
+* Jonathan Huang, github: [jch1](https://github.com/jch1)
+* Vivek Rathod, github: [tombstone](https://github.com/tombstone)
+* Derek Chow, github: [derekjchow](https://github.com/derekjchow)
+* Chen Sun, github: [jesu9](https://github.com/jesu9)
+* Menglong Zhu, github: [dreamdragon](https://github.com/dreamdragon)
 
-Install the other necessary packages by issuing the following commands:
-```
-(tensorflow1) C:\> conda install -c anaconda protobuf
-(tensorflow1) C:\> pip install pillow
-(tensorflow1) C:\> pip install lxml
-(tensorflow1) C:\> pip install Cython
-(tensorflow1) C:\> pip install contextlib2
-(tensorflow1) C:\> pip install jupyter
-(tensorflow1) C:\> pip install matplotlib
-(tensorflow1) C:\> pip install pandas
-(tensorflow1) C:\> pip install opencv-python
-```
-(Note: The ‘pandas’ and ‘opencv-python’ packages are not needed by TensorFlow, but they are used in the Python scripts to generate TFRecords and to work with images, videos, and webcam feeds.)
 
-### 3. Download or Clone My repository.
+## Table of contents
 
-1. [Download the Repository from this link by clicking HERE](https://github.com/funQaar/Object-Detection-General-)
+Before You Start:
+* <a href='g3doc/installation.md'>Installation</a><br>
 
-### 3. STEPS for Running the Final Program.
+Quick Start:
+* <a href='object_detection_tutorial.ipynb'>
+      Quick Start: Jupyter notebook for off-the-shelf inference</a><br>
+* <a href="g3doc/running_pets.md">Quick Start: Training a pet detector</a><br>
 
-1. Open Anaconda Terminal.
-2. Then, activate the environment by :
-```
-C:\> activate tensorflow1
-```
+Setup:
+* <a href='g3doc/configuring_jobs.md'>
+      Configuring an object detection pipeline</a><br>
+* <a href='g3doc/preparing_inputs.md'>Preparing inputs</a><br>
 
-3.Then,open python terminal by :
-```
-C:\> idle
-```
-4. Browse to the file location of file named : Object_img.py and run it by pressing F5.
-5. Voila, The result is displayed below.
+Running:
+* <a href='g3doc/running_locally.md'>Running locally</a><br>
+* <a href='g3doc/running_on_cloud.md'>Running on the cloud</a><br>
+
+Extras:
+* <a href='g3doc/detection_model_zoo.md'>Tensorflow detection model zoo</a><br>
+* <a href='g3doc/exporting_models.md'>
+      Exporting a trained model for inference</a><br>
+* <a href='g3doc/defining_your_own_model.md'>
+      Defining your own model architecture</a><br>
+* <a href='g3doc/using_your_own_dataset.md'>
+      Bringing in your own dataset</a><br>
+
+## Getting Help
+
+Please report bugs to the tensorflow/models/ Github
+[issue tracker](https://github.com/tensorflow/models/issues), prefixing the
+issue name with "object_detection". To get help with issues you may encounter
+using the Tensorflow Object Detection API, create a new question on
+[StackOverflow](https://stackoverflow.com/) with the tags "tensorflow" and
+"object-detection".
+
+## Release information
+
+### August 11, 2017
+
+We have released an update to the [Android Detect
+demo](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/examples/android)
+which will now run models trained using the Tensorflow Object
+Detection API on an Android device.  By default, it currently runs a
+frozen SSD w/Mobilenet detector trained on COCO, but we encourage
+you to try out other detection models!
+
+<b>Thanks to contributors</b>: Jonathan Huang, Andrew Harp
+
+### June 15, 2017
+
+In addition to our base Tensorflow detection model definitions, this
+release includes:
+
+* A selection of trainable detection models, including:
+  * Single Shot Multibox Detector (SSD) with MobileNet,
+  * SSD with Inception V2,
+  * Region-Based Fully Convolutional Networks (R-FCN) with Resnet 101,
+  * Faster RCNN with Resnet 101,
+  * Faster RCNN with Inception Resnet v2
+* Frozen weights (trained on the COCO dataset) for each of the above models to
+  be used for out-of-the-box inference purposes.
+* A [Jupyter notebook](object_detection_tutorial.ipynb) for performing
+  out-of-the-box inference with one of our released models
+* Convenient [local training](g3doc/running_locally.md) scripts as well as
+  distributed training and evaluation pipelines via
+  [Google Cloud](g3doc/running_on_cloud.md).
+
+
+<b>Thanks to contributors</b>: Jonathan Huang, Vivek Rathod, Derek Chow,
+Chen Sun, Menglong Zhu, Matthew Tang, Anoop Korattikara, Alireza Fathi, Ian Fischer, Zbigniew Wojna, Yang Song, Sergio Guadarrama, Jasper Uijlings,
+Viacheslav Kovalevskyi, Kevin Murphy

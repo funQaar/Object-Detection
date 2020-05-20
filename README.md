@@ -62,7 +62,7 @@ Install the other necessary packages by issuing the following commands:
 
 1. [Download the Repository from this link by clicking HERE](https://github.com/funQaar/Object-Detection-General-)
 
-### 3. STEPS for Running the Final Program.
+### 4. STEPS for Running the Final Program.
 
 1. Open Anaconda Terminal.
 2. Then, activate the environment by :
